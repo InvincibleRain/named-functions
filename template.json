@@ -1,0 +1,10 @@
+{
+  "name": "Name of the function",
+  "description": "Description of the function",
+  "arguments": ["Array of positional arguments"],
+  "arguments_description": { "argument name": "argument description" },
+  "formula": "The actual formula",
+  "dependencies": ["Array of formula names, that this formula depends upon"],
+  "example": "Example formula",
+  "example_desciption": "Example formula description"
+}

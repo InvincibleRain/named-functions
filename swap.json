@@ -1,0 +1,14 @@
+{
+  "name": "SWAPROW",
+  "description": "Swaps two rows  given two indexes",
+  "arguments": ["arr", "i", "j"],
+  "arguments_description": {
+    "arr": "The array where the swap needs to take place",
+    "i": "The index of the first row to swap",
+    "j": "The index of the other row to be swapped with"
+  },
+  "formula": "=SORT(arr,LAMBDA(keys,SWITCH(keys,i,j,j,i,keys))(SEQUENCE(ROWS(arr))),1)",
+  "example": "=SWAPROW(A1:A15,2,5)",
+  "example_desciption": "Swap row 2 and 5 in range A1:A15",
+  "dependencies": []
+}
