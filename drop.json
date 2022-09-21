@@ -1,0 +1,10 @@
+{
+  "name": "DROP",
+  "description": "Drops columns or rows based on provided indexes",
+  "arguments": ["arr", "to_drop", "rc"],
+  "arguments_description": { "argument name": "argument description" },
+  "formula": "=FILTER(arr,MAP(sequence(if(rc=\"c\",1,ROWS(arr)),if(rc=\"c\",COLUMNS(arr),1)),lambda(s,AND(s<>to_drop))))",
+  "dependencies": [],
+  "example": "=DROP(A1:A5,{1,5},\"r\")",
+  "example_desciption": "Drops first and fifth row from the given array"
+}
