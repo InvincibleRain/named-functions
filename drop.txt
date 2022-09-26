@@ -1,0 +1,6 @@
+=FILTER(rng,
+  ISNA(MATCH(SEQUENCE(
+    IF(ROWS(arr)>COLUMNS(arr),ROWS(rng),1),
+    IF(ROWS(arr)>COLUMNS(arr),1,COLUMNS(rng))
+  ),arr,0))
+)

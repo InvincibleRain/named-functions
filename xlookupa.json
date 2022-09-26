@@ -1,0 +1,27 @@
+{
+  "name": "XLOOKUPA",
+  "description": "Returns all matching functions",
+  "arguments": ["key","srng","rrng"],
+  "arguments_description": { "argument name": "argument description" },
+  "formula": "=IF(
+  ISERROR(
+    XLOOKUP(key,srng,rrng)
+  ),
+  ,
+  LAMBDA(curr_rg,rowof_srg,
+    {curr_rg;
+      XLOOKUPA(key,
+        OFFSET(srng,ROW(curr_rg)-rowof_srg+1,0,ROWS(srng)+rowof_srg-ROW(curr_rg)-1),
+        OFFSET(rrng,ROW(curr_rg)-rowof_srg+1,0,ROWS(srng)+rowof_srg-ROW(curr_rg)-1)
+      )
+    }
+  )(
+    XLOOKUP(key,srng,rrng),
+    ROW(srng)
+  )
+)
+",
+  "dependencies": ["XLOOKUP"],
+  "example": "XLOOKUPA(A1,B1:B4,C1:C4)",
+  "example_desciption": "Example formula description"
+}
