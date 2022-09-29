@@ -1,0 +1,14 @@
+{
+  "name": "GET_COMBINATIONS",
+  "description": "Gets all combinations in a  efficient manner",
+  "arguments": ["rg", "n", "k"],
+  "arguments_description": {
+    "rg": "One dimensional array to get items from",
+    "n": "Number of items",
+    "k": "Maximum number of items to choose from"
+  },
+  "formula": "./get_combinations.txt",
+  "dependencies": [],
+  "example": "GET_COMBINATIONS(A1:C1,3,3)",
+  "example_desciption": "Lists all combinations of nC1+nC2+nC3"
+}
