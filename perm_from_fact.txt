@@ -1,0 +1,35 @@
+PERM_FROM_FACT(inpArr,compArr,resArr)
+ARRAYFORMULA(
+  IF(
+    ISNA(inpArr),
+    resArr,
+    {
+      resArr,
+      PERM_FROM_FACT(
+        DROP(inpArr,{1}),
+        IF(
+          DROP(
+            inpArr, 
+            {0,SEQUENCE(1,COLUMNS(inpArr)-1,2)}
+          )
+          <=compArr,
+          compArr-1,
+          compArr
+        ),
+        --REGEXEXTRACT(
+          " "&TRANSPOSE(QUERY(TRANSPOSE(
+            IF(
+              DROP(
+                inpArr, 
+                {0,SEQUENCE(1,COLUMNS(inpArr)-1,2)}
+              )=compArr,
+              SEQUENCE(1,limit,0),
+            )
+          ),,9^99)),
+          "^\s*(\d+)"
+        ),
+        limit
+      )
+    }
+  )
+)

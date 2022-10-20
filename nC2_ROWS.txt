@@ -1,0 +1,20 @@
+=QUERY(
+  LAMBDA(mrg,
+    REDUCE(
+      {"",""},
+      SEQUENCE(ROWS(mrg)-1,1,0),
+      LAMBDA(a_,c_,
+        {
+          a_;
+          LAMBDA(rg,
+            REDUCE(
+              {"",""},
+              OFFSET(rg,1,0,ROWS(rg)-1),
+              LAMBDA(a,c,{a;{INDEX(rg,1),c}})
+            )
+          )(OFFSET(mrg,c_,0,ROWS(mrg)-c_))
+        }
+      )
+    )
+  )(A2:E2),
+"where Col1 is not null")

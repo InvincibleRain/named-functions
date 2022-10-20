@@ -1,6 +1,6 @@
 =FILTER(rng,
   ISNA(MATCH(SEQUENCE(
-    IF(ROWS(arr)>COLUMNS(arr),ROWS(rng),1),
-    IF(ROWS(arr)>COLUMNS(arr),1,COLUMNS(rng))
-  ),arr,0))
+    IF(ROWS(to_drop)>COLUMNS(to_drop),ROWS(rng),1),
+    IF(ROWS(to_drop)>COLUMNS(to_drop),1,COLUMNS(rng))
+  ),to_drop,0))
 )
