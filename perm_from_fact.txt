@@ -1,35 +1,30 @@
-PERM_FROM_FACT(inpArr,compArr,resArr)
 ARRAYFORMULA(
   IF(
-    ISNA(inpArr),
+    AND(ISNA(inpArr)),
     resArr,
-    {
-      resArr,
-      PERM_FROM_FACT(
-        DROP(inpArr,{1}),
-        IF(
-          DROP(
-            inpArr, 
-            {0,SEQUENCE(1,COLUMNS(inpArr)-1,2)}
-          )
-          <=compArr,
-          compArr-1,
-          compArr
-        ),
-        --REGEXEXTRACT(
-          " "&TRANSPOSE(QUERY(TRANSPOSE(
-            IF(
-              DROP(
-                inpArr, 
-                {0,SEQUENCE(1,COLUMNS(inpArr)-1,2)}
-              )=compArr,
-              SEQUENCE(1,limit,0),
-            )
-          ),,9^99)),
-          "^\s*(\d+)"
-        ),
-        limit
-      )
-    }
+    DROP(
+      {
+        IF(AND(resArr=""),INDEX(inpArr,0,1),resArr),
+        PERM_FROM_FACT(
+          DROP(inpArr,{1}),
+          IF(
+            INDEX(inpArr,0,1)<=compArr,
+            compArr-1,
+            compArr
+          ),
+          --REGEXEXTRACT(
+            " "&TRANSPOSE(QUERY(TRANSPOSE(
+              IF(
+                INDEX(inpArr,0,1)=compArr,
+                SEQUENCE(1,limit,0),
+              )
+            ),,9^99)),
+            "^\s*(\d+)"
+          ),
+          limit
+        )
+      },
+      IF(AND(resArr=""),{1},{0})
+    )
   )
 )

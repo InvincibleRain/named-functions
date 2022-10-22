@@ -1,0 +1,10 @@
+{
+  "name": "ES_PERM_FROM_FACT",
+  "description": "Gets permutations from factoradic numbers",
+  "arguments": ["inpArr", "compArr", "resArr", "limit"],
+  "arguments_description": { "argument name": "argument description" },
+  "formula": "./perm_from_fact.txt",
+  "dependencies": ["ES_DROP"],
+  "example": "./perm_from_fact-example.txt",
+  "example_desciption": "Example formula description"
+}
